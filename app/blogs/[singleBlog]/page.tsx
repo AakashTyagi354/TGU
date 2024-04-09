@@ -6,24 +6,23 @@ import WidthWrapper from "@/components/WidthWrapper";
 import { BookMarked, Heart, Loader2, Share } from "lucide-react";
 import { useParams } from "next/navigation";
 import { blogData } from "@/utils/blogData";
-interface BlogCartProps {
-  data: {
-    img: any;
-    title: string;
-    desc: string;
-    subTitle: string;
-    desc2: string;
-  };
+interface BlogData {
+  _id: number;
+  img: any;
+  title: string;
+  desc: string;
+  subTitle: string;
+  desc2: string;
 }
 
 export default function SingleBlogPage() {
-  const [singleData, setSingleData] = useState(null);
+  const [singleData, setSingleData] = useState<BlogData | null>(null);
   const { singleBlog } = useParams();
   console.log(singleBlog);
   useEffect(() => {
     setTimeout(() => {
       const foundBlog = blogData.find(
-        (blog) => blog._id === parseInt(singleBlog)
+        (blog) => blog._id === parseInt(singleBlog as string)
       );
 
       if (foundBlog) {

@@ -69,8 +69,8 @@ export default function Navbar() {
               </HoverCardTrigger>
               <HoverCardContent className="flex flex-col gap-1 bg-white text-sm text-gray-600">
                 {blogData.map((ele, idx) => (
-                  <Link href={`blogs/${ele._id}`}>
-                    <p className="border-b p-2 flex items-center justify-center cursor-pointer uppercase" >
+                  <Link key={idx} href={`blogs/${ele._id}`}>
+                    <p className="border-b p-2 flex items-center justify-center cursor-pointer uppercase">
                       {ele.title}
                     </p>
                   </Link>

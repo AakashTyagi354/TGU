@@ -212,9 +212,10 @@ export default function Home() {
       <div className="bg-[#F6F6F6] h-[550px] my-12">
         <div className="w-full flex flex-col justify-center items-center pt-10 gap-4 ">
           <p className="text-3xl font-[300]">@ J B G L A S S _</p>
-          <p className="text-gray-500 text-sm tracking-wide">
-            You deserve the best and that's what we continuously work on. Follow
-            our Instagram page to stay updated with our latest innovations.
+          <p className="text-gray-500 text-xs tracking-wide">
+            You deserve the best and that&apos;s what we continuously work on.
+            Follow our Instagram page to stay updated with our latest
+            innovations.
           </p>
         </div>
         <div className=" pl-8 mt-12 w-full h-[250px] flex gap-4 ">

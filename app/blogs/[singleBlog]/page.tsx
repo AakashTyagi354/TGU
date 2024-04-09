@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import img1 from "../../../public/glass1.webp";
+
 import Image from "next/image";
 import WidthWrapper from "@/components/WidthWrapper";
 import { BookMarked, Heart, Loader2, Share } from "lucide-react";
@@ -16,7 +16,7 @@ interface BlogCartProps {
   };
 }
 
-export default function page() {
+export default function SingleBlogPage() {
   const [singleData, setSingleData] = useState(null);
   const { singleBlog } = useParams();
   console.log(singleBlog);

@@ -11,16 +11,35 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@radix-ui/react-hover-card";
-import { ArrowDown, ArrowDown10, ArrowDownFromLine } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+
 import { IoIosArrowDown } from "react-icons/io";
+import { Input } from "./ui/input";
+import { Textarea } from "./ui/textarea";
+import { Button } from "./ui/button";
+import { useToast } from "./ui/use-toast";
+import Link from "next/link";
+import { blogData } from "@/utils/blogData";
+
+const handleSubmit = () => {};
 export default function Navbar() {
+  const { toast } = useToast();
   return (
-    <>
-      <div className="bg-gray-50 h-16 w-full sticky top-0 flex items-center">
+    <div className="sticky top-0 z-50">
+      <div className="bg-gray-50 h-16 w-full  flex items-center">
         <WidthWrapper className="flex items-center justify-between">
           <div className="flex items-center gap-2 cursor-pointer ">
             <Image alt="" src={"/logo.png"} width={50} height={20} />
-            <p className="font-semibold tracking-wider">TheGlassUniverse</p>
+            <Link href={"/"}>
+              <p className="font-semibold tracking-wider">TheGlassUniverse</p>
+            </Link>
           </div>
           <div className="ml-12 flex items-center gap-6">
             <HoverCard>
@@ -49,40 +68,57 @@ export default function Navbar() {
                 <IoIosArrowDown />
               </HoverCardTrigger>
               <HoverCardContent className="flex flex-col gap-1 bg-white text-sm text-gray-600">
-                <p className="border-b p-2 flex items-center justify-center cursor-pointer">
-                  Frosted Glass
-                </p>
-                <p className="border-b p-2 flex items-center justify-center cursor-pointer">
-                  Laminated Glass
-                </p>
-                <p className="border-b p-2 flex items-center justify-center cursor-pointer">
-                  Low-E Glass
-                </p>
-                <p className="border-b p-2 flex items-center justify-center cursor-pointer">
-                  Tempered Glass
-                </p>
-                <p className="border-b p-2 flex items-center justify-center cursor-pointer">
-                  Tempered Glass
-                </p>
-                <p className="border-b p-2 flex items-center justify-center cursor-pointer">
-                  Tinted Glass
-                </p>
-                <p className="border-b p-2 flex items-center justify-center cursor-pointer">
-                  Clear Glass
-                </p>
+                {blogData.map((ele, idx) => (
+                  <Link href={`blogs/${ele._id}`}>
+                    <p className="border-b p-2 flex items-center justify-center cursor-pointer uppercase" >
+                      {ele.title}
+                    </p>
+                  </Link>
+                ))}
               </HoverCardContent>
             </HoverCard>
-            <p className="text-sm font-semibold cursor-pointer text-gray-700">
-              Blogs
-            </p>
-            <p className="text-sm font-semibold cursor-pointer text-gray-700">
-              News
-            </p>
+            <Link href={"/blogs"}>
+              <p className="text-sm font-semibold cursor-pointer text-gray-700">
+                Blogs
+              </p>
+            </Link>
+            <Link href={"/news"}>
+              <p className="text-sm font-semibold cursor-pointer text-gray-700">
+                News
+              </p>
+            </Link>
           </div>
           <div className=" w-[300px] flex items-center justify-end">
-            <button className="rounded-full px-6 border border-[#3764eb] text-[#3764eb] text-sm py-2 tracking-wider">
-              Query?
-            </button>
+            <Dialog>
+              <DialogTrigger className="rounded-full px-6 border border-[#3764eb] text-[#3764eb] text-sm py-2 tracking-wider">
+                {" "}
+                Query?
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Ask your query here</DialogTitle>
+                  <DialogDescription className="mt-4">
+                    <Input
+                      placeholder="Your Phone number"
+                      type="number"
+                      className="mt-4"
+                    />
+                    <Textarea placeholder="write your query" className="mt-4" />
+                    <Button
+                      className="w-full mt-4"
+                      onClick={() => {
+                        toast({
+                          title: "Scheduled: Catch up",
+                          description: "Friday, February 10, 2023 at 5:57 PM",
+                        });
+                      }}
+                    >
+                      Submit
+                    </Button>
+                  </DialogDescription>
+                </DialogHeader>
+              </DialogContent>
+            </Dialog>
           </div>
         </WidthWrapper>
       </div>
@@ -111,6 +147,6 @@ export default function Navbar() {
           </div>
         </WidthWrapper>
       </div>
-    </>
+    </div>
   );
 }

@@ -44,7 +44,7 @@ export default function Home() {
               </span>{" "}
               is an exchanging and dispersion organization managing in a wide
               range of glasses and related items. Built up in Mumbai, we stand
-              today as one of India's biggest and most rumored glass exchanging
+              today as one of India biggest and most rumored glass exchanging
               organizations. With a broad sourcing system, we source crude
               glasses from everywhere throughout the world and circulate them
               all through India. Working out of current stockrooms in Mumbai
